@@ -1,0 +1,565 @@
+@import url(https://fonts.googleapis.com/css?family=Cabin);
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+
+:root{
+    --bg-color: #CCC;
+    --txt-color: #000;
+}
+
+header{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    background: rgb(165, 148, 168,1);
+    z-index: 100;
+}
+h1{
+    margin: 5px 20px;
+}
+body{
+    font-family: 'Dosis', sans-serif;
+    margin: 0 auto;
+    padding: 0;
+}
+p{  margin: 0;
+    padding: 0;
+}
+/*左画面*/
+.content{
+    display: flex;
+}
+.filebtn {
+    position: relative;
+}
+.filebtn p {
+    position: absolute;
+    font-size: 8px;
+}
+.filebtn input[type="file"] {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.image{
+    position: fixed;
+    color: var(--txt-color);
+    padding-top: 20px;
+    width: 50vw;
+    height: 100vh;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.input-img, .dst-img{
+    margin: 20px 0;
+    width: auto;
+    height: 300px;
+    border: 1px solid rgb(115, 98, 118,1);
+    text-align: center;
+}
+.image p{
+    margin: 5px 0;
+}
+
+.file-image, .convert-img{
+    height: 300px;
+    width: auto;
+}
+
+/*右画面*/
+.top{
+    width: 100%;
+}
+h2{ 
+    position: relative;
+    display: flex;
+    top: 30px;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+    font-size: 48px;
+}
+.parameter{
+    position: relative;
+    width: 50vw;
+    height: 100vh;
+    left: 50%;
+    top: 15px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ruby{
+    font-size: 30px;
+}
+rt{
+    color: rgb(115, 98, 118);
+    text-align: left; 
+    font-size: 0.4em; /* 文字サイズを大きく */
+  }
+.parameter-bar{
+    width: 80%;
+    height: auto;
+    margin: 0 auto 0px;
+}
+.title{
+    display: flex;
+    align-items: center;
+}
+
+/*css*/
+.dst{
+    width: 60%;
+    margin-top: 100px;
+    padding-bottom: 450px;
+}
+
+.css{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    background-color: rgb(165, 148, 168,1);
+    margin-bottom: -13px;
+}
+
+.dst-txt{
+    padding-top: 20px;
+    padding-right: 40px;
+    margin-bottom: -2%;
+    text-align: left;
+    background-color: #ccc;
+}
+
+input{
+    margin: 10px;
+}
+
+/*レンジ*/
+.rs-range{
+    width: 100%;
+    padding: 20px 0;
+    -webkit-appearance: none;
+}
+
+.rs-range:focus {
+    outline: none;
+}
+
+.rs-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    box-shadow: none;
+    background: rgb(165, 148, 168,1);
+    border-radius: 0px;
+    border: 0px solid #010101;
+}
+.rs-range::-webkit-slider-thumb {
+    box-shadow: none;
+    border: 0px solid #000;
+    box-shadow: 0px 3px 2px rgba(0,0,0,0.25);
+    height: 40px;
+    width: 20px;
+    border-radius: 22px;
+    background: rgb(115, 98, 118,1);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -20px;
+}
+
+.rs-label{
+    color: rgb(115, 98, 118,1);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 32px;
+    margin: 15px;
+}
+.dst{
+    text-align: center;
+}
+
+/*ボタン*/
+/*左画面*/
+.color-button{
+    margin-top: 15px;
+    width: auto;
+    height: auto;
+    display: flex;
+    position: relative;
+    gap: 10px;
+}
+/*右画面*/
+.top-button{
+    padding-top: 30px;
+    left: 50px;
+    margin:50px auto;
+    width: 100%;
+    display: flex;
+    gap:30px;
+    justify-content: center;
+    align-items: center;
+}
+.reset-button{
+    position:absolute;
+    right: 50px;
+    width: 20%;
+    height: 40px;
+}
+
+.copy-button{
+    position: relative;
+    margin: 30px auto;
+    left: 10px;
+}
+button, .filebtn{
+    width: auto;  
+    line-height: 1.5;
+    padding: 10px 20px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 100vh;
+    background: #fbfbfc;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#fbfbfc),
+      to(#dcddde)
+    );
+    background: -webkit-linear-gradient(top, #fbfbfc 0%, #dcddde 100%);
+    background: linear-gradient(180deg, #fbfbfc 0%, #dcddde 100%);
+    -webkit-box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 
+      0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2),
+      0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1);
+}
+button span,.filebtn{
+    display: inline-block; 
+    -webkit-transition: all 0.05s;
+    transition: all 0.05s;
+}
+button:hover ,.filebtn:hover {
+-webkit-box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2),
+    0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1),
+    inset 0 3px 3px rgba(0, 0, 0, 0.18);
+box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2),
+    0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1),
+    inset 0 3px 3px rgba(0, 0, 0, 0.18);
+}
+.button:hover span, .filebtn:hover span{
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+}
+/*スクロール*/
+.scroll{
+    position: fixed;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    bottom: 15%;
+}
+.mouse{
+    margin: 20px;
+    width: 20px;
+    height: 40px;
+    position: relative;
+    background: #333 linear-gradient(transparent 0%,
+                                        transparent 50%,
+                                        #4e5559 50%,
+                                        #4e5559 100%);
+    background-size: 100% 200%;
+    border-radius: 100px;
+    animation: colorSlide 5s linear infinite,
+               nudgeMouse 5s ease-out infinite;
+  }
+  .mouse:before,
+  .mouse:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+  .mouse:before{
+    width: 16px;
+    height: 36px;
+    background-color: #fff;
+    border-radius: 100px;
+  }
+  .mouse:after{
+    background-color: rgb(115, 98, 118);;
+    width: 2px;
+    height: 2px;
+    border-radius: 100%;
+    animation: trackBallSlide 5s linear infinite;
+  }
+  .text{
+    rotate: 90deg;
+    font-family: Cabin;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgb(115, 98, 118);
+    animation: colorText 5s ease-out infinite,
+               nudgeText 5s ease-out infinite;
+  }
+/* Animations */
+@keyframes colorSlide{
+  0% {
+    background-position: 0% 100%;
+  }
+  20% {
+    background-position: 0% 0%;
+  }
+  21% {
+    background-color: rgb(115, 98, 118);
+  }
+  29.99% {
+    background-color: #333;
+    background-position: 0% 0%;
+  }
+  30% {
+    background-color: rgb(115, 98, 118);
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 0% 0%;
+  }
+  51% {
+    background-color: rgb(115, 98, 118);
+  }
+  59% {
+    background-color:#333;
+    background-position: 0% 0%;
+  }
+  60% {
+    background-color: rgb(115, 98, 118);
+    background-position: 0% 100%;
+  }
+  80% {
+    background-position: 0% 0%;
+  }
+  81% {
+    background-color:  rgb(115, 98, 118);
+  }
+  90%, 100% {
+    background-color: #333;
+  }
+}
+
+@keyframes colorText{
+  21% {
+    color:  rgb(115, 98, 118);
+  }
+  30% {
+    color: #333;
+  }
+  51% {
+    color:  rgb(115, 98, 118);
+  }
+  60% {
+    color:#333;
+  }
+  81% {
+    color:rgb(115, 98, 118);
+  }
+  90% {
+    color: #333
+  }
+} 
+
+@keyframes trackBallSlide{
+  0%{
+    opacity: 1;
+    transform: scale(1) translateY(-10px);
+  }
+  6%{
+    opacity: 1;
+    transform: scale(0.9) translateY(0px);
+  }
+  14%{
+    opacity: 0;
+    transform: scale(0.4) translateY(15px);
+  }
+  15%, 19%{
+    opacity: 0;
+    transform: scale(0.4) translateY(-10px);
+  }
+  28%, 29.99%{
+    opacity: 1;
+    transform: scale(1) translateY(-10px);
+  }
+  30%{
+    opacity: 1;
+    transform: scale(1) translateY(-10px);
+  }
+  36%{
+    opacity: 1;
+    transform: scale(0.9) translateY(0px);
+  }
+  44%{
+    opacity: 0;
+    transform: scale(0.4) translateY(15px);
+  }
+  45%, 49%{
+    opacity: 0;
+    transform: scale(0.4) translateY(-10px);
+  }
+  58%, 59.99%{
+    opacity: 1;
+    transform: scale(1) translateY(-10px);
+  }
+  60%{
+    opacity: 1;
+    transform: scale(0.9) translateY(-10px);
+  }
+  66%{
+    opacity: 1;
+    transform: scale(0.9) translateY(0px);
+  }
+  74%{
+    opacity: 0;
+    transform: scale(0.4) translateY(15px);
+  }
+  75%, 79%{
+    opacity: 0;
+    transform: scale(0.4) translateY(-10px);
+  }
+  88%, 100%{
+    opacity: 1;
+    transform: scale(1) translateY(-10px);
+  }
+}
+@keyframes nudgeMouse{
+  0%{
+    transform: translateY(-5px);
+  }
+  20%{
+    transform: translateY(3px);
+  }
+  30%{
+    transform: translateY(-5px);
+  }
+  50%{
+    transform: translateY(3px);
+  }
+  60%{
+    transform: translateY(-5px);
+  }
+  80%{
+    transform: translateY(3px);
+  }
+  90%{
+    transform: translateY(-5px);
+  }
+}
+@keyframes nudgeText {
+  0%{
+    transform: translateX(0);
+  }
+  20%{
+    transform: translateX(2px);
+  }
+  30%{
+    transform: translateX(0);
+  }
+  50%{
+    transform: translateX(2px);
+  }
+  60%{
+    transform: translateX(0);
+  }
+  80%{
+    transform: translateX(2px);
+  }
+  90%{
+    transform: translateX(0);
+  }
+}
+
+/*トップへ戻るボタン*/
+#page-top {
+  position: fixed;
+  right: 30px;
+  bottom: 0;
+  height: 120px;
+  width: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transform: rotate(90deg);
+  font-size: 90%;
+  line-height: 1.5rem;
+  color: rgb(115, 98, 118,1);
+  padding: 0 0 0 35px;
+  border-top: solid 1px;
+}
+#page-top::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -1px;
+  left: 0px;
+  width: 15px;
+  border-top: solid 1px;
+  transform: rotate(35deg);
+  transform-origin: left top;
+}
+#page-top span{
+  position: absolute;
+  right: 10px;
+  font-size: 18px;
+}
+/***トップへ戻るボタン***/
+
+/* テキスト入力フォームと送信ボタンのスタイル */
+.filter-form {
+    display: flex;
+    align-items: center;
+    margin: 30px;
+}
+
+.filter-form label {
+    margin-right: 1px;
+}
+
+.filter-form input[type="text"] {
+    flex-grow: 1;
+    margin-right: 11px;
+    padding: 5px;
+}
+
+.submit-button {
+    padding: 5px 10px;
+    background-color: #888;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #555;
+}

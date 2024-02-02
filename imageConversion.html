@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="conversion.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="getValue.js" defer></script>
+    <script src="resetValue.js" defer></script>
+    <script src="inputImage.js" defer></script>
+    <script src="downloadImage.js" defer></script>
+    <script src="dstText.js" defer></script>
+    <script src="bgChangeColor.js" defer></script>
+    <script src="parameterstyle.js" defer></script>
+    <script src="updateUrl.js" defer></script>
+    <script src="undo_redo.js" defer></script>
+    <title>画像変換デモ</title>
+</head>
+<body>
+    <header>
+        <h1>Filter Sample AI</h1>
+    </header>
+    <div class="content">
+        <div class="image">
+            <div class="filebtn">
+                <span>
+                <form>
+                    INPUT YOUR IMAGE
+                    <input type="file" accept='image/*' onchange="previewImage(this);"><br>
+                </form>
+                </span>
+            </div>
+            <div class="input-img">
+                <img id="inputImage" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="file-image" alt="画像を選択してください" >
+                <p>INPUT IMAGE</p>
+            </div>
+            
+            <div class="dst-img">
+                <img id="outputImage" class="convert-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="file-image" alt="画像を選択してください" >
+                <p>OUTPUT IMAGE</p>
+            </div>
+
+            <div class="color-button">
+                <button id="bg-white" onclick="bgChangeWhite()"><span>WHITE</span></button>
+                <button id="bg-black" onclick="bgChangeBlack()"><span>BLACK</span></button>
+                <button id="bg-gray" onclick="bgChangeGray()"><span>GRAY</span></button>
+            </div>
+            <!-- ダウンロード
+            <a onclick="downloadImg()" id="download">画像ダウンロード</a>
+            -->
+        </div>
+    
+        <div class="parameter">
+            <div class="top">
+                <h2>Parameter</h2>
+                <div class="top-button">
+                    <a href="#copy"><button type="button" class="decision-button" onclick="copyToClipboard()"><span>決定</span></button></a>
+                    <button type="button" class="all-reset-button" id="all-reset" onclick="allReset(), allResetDst()">すべてリセット</button>
+                    <button id="undo-button" type="button">戻る</button>
+                    <button id="redo-button" type="button">進む</button>
+                </div>
+            </div>
+            <div class="filter-form">
+                <label for="filterInput" id="filterLabel">どのようにフィルターを<select id="action-select"><option value="create">生成</option><option value="modify">修正</option></select>するか</label>
+                <input type="text" id="filterInput" name="filterInput" maxlength="10">
+                <button type="button" id="submit-button">送信</button>
+            </div>
+            <div class="filter-result"></div>
+            <div class="response-result"></div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Brightness<rt>明度</rt></ruby>
+                    <button type="button" class="reset-button" id="bri-reset" onclick="briReset(), briResetDst()"><span>リセット</span></button>
+                </div>
+                <span id="bri-rs-bullet" class="rs-label">100</span>
+                <input  type="range" id="bri-range" class="rs-range" min="0" max="200" step="1" value="100">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Saturation<rt>彩度</rt></ruby>
+                    <button type="button" class="reset-button" id="sat-reset" onclick="satReset(), satResetDst()">リセット</button>
+                </div>
+                <span id="sat-rs-bullet" class="rs-label">100</span>
+                <input type="range" id="sat-range" class="rs-range" min="0" max="200" step="1" value="100">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Contrast<rt>コントラスト</rt></ruby>
+                    <button type="button" class="reset-button" id="con-reset" onclick="conReset(), conResetDst()">リセット</button>
+                </div>
+                <span id="con-rs-bullet" class="rs-label">100</span>
+                <input type="range" id="con-range" class="rs-range" min="0" max="200" step="1" value="100">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Hue<rt>色調変更</rt></ruby>
+                    <button type="button"  class="reset-button" id="hue-reset" onclick="hueReset(), hueResetDst()">リセット</button>
+                </div>
+                <span id="hue-rs-bullet" class="rs-label">0</span>
+                <input type="range" id="hue-range" class="rs-range" min="0" max="360" step="1" value="0">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Grayscale<rt>モノクロ</rt></ruby>
+                    <button type="button" class="reset-button" id="gra-reset" onclick="graReset(), graResetDst()">リセット</button>
+                </div>
+                <span id="gra-rs-bullet" class="rs-label">0</span>
+                <input type="range" id="gra-range" class="rs-range" min="0" max="100" step="1" value="0">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Sepia<rt>セピア</rt></ruby>
+                    <button type="button" class="reset-button" id="sep-reset" onclick="sepReset(), sepResetDst()">リセット</button>
+                </div>
+                <span id="sep-rs-bullet" class="rs-label">0</span>
+                <input type="range" id="sep-range" class="rs-range" min="0" max="100" step="1" value="0">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Invert<rt>ネガ化</rt></ruby>
+                    <button type="button" class="reset-button" id="inv-reset" onclick="invReset(), invResetDst()">リセット</button>
+                </div>
+                <span id="inv-rs-bullet" class="rs-label">0</span>
+                <input type="range" id="inv-range" class="rs-range" min="0" max="100" step="1" value="0">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Blur<rt>ぼかし</rt></ruby>
+                    <button type="button"  class="reset-button" id="blu-reset" onclick="bluReset(), bluResetDst()">リセット</button>
+                </div>
+                <span id="blu-rs-bullet" class="rs-label">0.0</span>
+                <input type="range" id="blu-range" class="rs-range" min="0" max="1" step="0.1" value="0">
+            </div>
+            <div class="parameter-bar">
+                <div class="title">
+                    <ruby>Opacity<rt>透過</rt></ruby>
+                    <button type="button" class="reset-button" id="opa-reset" onclick="opaReset(), opaResetDst()">リセット</button>
+                </div>
+                <span id="opa-rs-bullet" class="rs-label">100</span>
+                <input type="range" id="opa-range" class="rs-range" min="5" max="100" step="1" value="100">
+            </div>
+            <a href="#dst"><button type="button"  class="decision-button" onclick="copyToClipboard()">決定</button></a>
+
+            <div class="dst" id="copy">
+                <h3 class="css">CSS</h3>
+                <pre class="dst-txt" id="dst">
+                <code>img{</code>
+                    <code>filter: </code><code class="bri-txt">brightness(<span id="bri-value"></span>%) </code>
+                                <code id="copy-Target" class="sat-txt">saturate(<span id="sat-value"></span>%) </code>
+                                <code class="con-txt">contrast(<span id="con-value"></span>%) </code>
+                                <code class="hue-txt">hue-rotate(<span id="hue-value"></span>deg) </code>
+                                <code class="con-txt">grayscale(<span id="gra-value"></span>%) </code>
+                                <code class="con-txt">sepia(<span id="sep-value"></span>%) </code>
+                                <code class="inv-txt">invert(<span id="inv-value"></span>%) </code>
+                                <code class="blu-txt">blur(<span id="blu-value"></span>px) </code>
+                                <code class="opa-txt">opacity(<span id="opa-value"></span>%)</code><code>;</code>
+                <code>}</code>
+                </pre>
+                <button type="button" id="copy-button" class="copy-button" onclick="copyToClipboard()">コピー</button>
+                <div>
+                    <button type="button" id="download-button" class="download-button" onclick="downloadImage()">画像ダウンロード</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll"> 
+        <p class="text">Scroll</p>
+        <div class="mouse"></div>
+    </div>
+    <a href="#" id="page-top"><span>top</span><i class="blogicon-chevron-up"></i></a>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="chatgpt.js"></script>
+</body>
+</html>

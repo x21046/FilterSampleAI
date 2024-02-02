@@ -1,0 +1,23 @@
+:root{
+    --bri-value: 100%;
+    --sat-value: 100%;
+    --con-value: 100%;
+    --hue-value: 0deg;
+    --gra-value: 0%;
+    --sep-value: 0%;
+    --inv-value: 0%;
+    --blu-value: 0px;
+    --opa-value: 100%;
+}
+
+img{
+    width: 400px;
+}
+
+.convert-img{
+    filter: brightness(var(--bri-value)) saturate(var(--sat-value)) 
+            contrast(var(--con-value)) hue-rotate(var(--hue-value)) 
+            grayscale(var(--gra-value)) sepia(var(--sep-value)) 
+            invert(var(--inv-value)) opacity(var(--opa-value)) 
+            blur(var(--blu-value));
+}
